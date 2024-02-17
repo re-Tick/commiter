@@ -1,16 +1,15 @@
 package main
 
 import (
-    "fmt"
-    "os/exec"
+	"commiter/cmd"
+	"log"
 )
 
 func main() {
-    cmd := exec.Command("/bin/bash", "commiter.sh")
-    output, err := cmd.CombinedOutput()
-    if err != nil {
-        fmt.Printf("Error executing script: %s\n", err)
-        return
-    }
-    fmt.Printf("Script output:\n%s\n", string(output))
+
+	// run the committer CLI
+	err := cmd.Execute()
+	if err != nil {
+		log.Panic("failed to start the CLI.", err)
+	}
 }
