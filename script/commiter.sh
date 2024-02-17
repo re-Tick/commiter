@@ -3,6 +3,9 @@
 # Get the current date in the format YYYY-MM-DD
 current_date=$(date +"%Y-%m-%d")
 
+# Get the current date and time 
+current_date_time=$(date +"%Y-%m-%d %H:%M:%S")
+
 # Define the branch name based on the current date
 branch_name="daily-branch-$current_date"
 
@@ -21,7 +24,7 @@ if [ -z "$(git status --porcelain)" ]; then
 else
     # Commit changes with a message indicating the date
     git add .
-    git commit -m "Changes for $current_date"
+    git commit -m "Changes for $current_date_time"
     
     # Push the changes to the remote repository
     git push origin "$branch_name"
